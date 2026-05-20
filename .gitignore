@@ -89,3 +89,13 @@ htmlcov/
 # Project documentation
 MAE-SAC算法完整解析.md
 TRAST_训练流程梳理.md
+
+# Script files
+*.sh
+transform_test_account_values.py
+plot_account_value_comparison.py
+
+# Script files
+*.sh
+transform_test_account_values.py
+plot_account_value_comparison.py
