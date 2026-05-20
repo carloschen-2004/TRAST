@@ -14,7 +14,7 @@ TRAST (Transformer-enhanced Reinforcement Learning Framework for Assets Cross-Se
 - **全面的基准测试**: 与经典策略进行对比评估
 
 ## 项目结构
-
+![整体框架](figures/整体框架.png)
 ```
 TRAST/
 ├── data/CSI/                              # CSI 300指数股票数据（94只股票）
@@ -67,7 +67,7 @@ pip install -r requirements.txt
 TRAST采用两阶段训练策略，每个阶段都有其特定的目标和优化方向。
 
 ### 阶段1: 表征学习 (Stage1_Representation)
-
+![表征学习框架](figures/表征学习框架.png)
 #### 目标
 
 通过无监督学习（MAE）和监督学习（预测）学习股票的有效特征表示。
@@ -104,7 +104,7 @@ python train.py --exp_type pred --arch_type MHA_RoPE_MoE --data_name CSI
 - `--train_epochs`: 训练轮数（默认10）
 
 ### 阶段2: 策略学习 (Stage2_Policy)
-
+![策略学习框架](figures/策略学习框架.png)
 #### 目标
 
 基于阶段1学习的特征表示，使用SAC算法进行交易策略学习。
@@ -221,24 +221,11 @@ STAGE2_CPU_PARAMS = {
 - **阶段2结果**: 保存在 `stage2_policy/results/{arch_type}/`
 - **基准测试结果**: 保存在 `benchmarks/results/{mode}_{arch_type}/`
 
-### 可视化输出
+TRAST架构对比：
+![TRAST架构对比](figures/TRAST架构对比.png)
 
-基准测试会生成以下可视化图表：
-
-1. **账户价值对比图**: 不同策略的账户价值变化曲线
-2. **累积收益率对比图**: 策略的累积收益率表现
-3. **绩效指标对比图**: 关键指标的柱状图对比
-
-### 性能指标
-
-系统会计算以下关键指标：
-
-- **Total Return**: 总收益率
-- **Annualized Return**: 年化收益率
-- **Sharpe Ratio**: 夏普比率（风险调整后收益）
-- **Max Drawdown**: 最大回撤（最大损失）
-- **Calmar Ratio**: 卡玛比率（回撤调整后收益）
-
+TRAST与不同量化算法对比：
+![TRAST与不同量化算法对比](figures/不同量化算法对比.png)
 ## 技术细节
 
 ### Transformer架构创新
